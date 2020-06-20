@@ -1,0 +1,14 @@
+
+API key:
+e0e2d958a42aa58009c5620ccae7c636
+
+Ejemplo de solicitud de API
+https://api.themoviedb.org/3/movie/550?api_key=e0e2d958a42aa58009c5620ccae7c636
+
+
+Token de acceso de lectura a la API (v4 auth)
+eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMGUyZDk1OGE0MmFhNTgwMDljNTYyMGNjYWU3YzYzNiIsInN1YiI6IjVlZTdjNWVmOTcxNWFlMDAyMGE2YmVjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RI7VxmYx6RcIdwqhUEt7e7MByjbquLYUPqRYKfGScig
+
+
+
+Direccion Imagen:   https://image.tmdb.org/t/p/w500
