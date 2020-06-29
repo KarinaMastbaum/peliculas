@@ -5,6 +5,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import 'package:peliculas/src/models/actores_model.dart';
+
 import 'package:peliculas/src/models/pelicula_model.dart';
 
 class PeliculasProvider {
@@ -12,6 +14,9 @@ class PeliculasProvider {
   String _apikey    = 'e0e2d958a42aa58009c5620ccae7c636';
   String _url       = 'api.themoviedb.org';
   String _language  = 'es-ES';
+
+
+  bool _cargando = false;
 
   int _popularesPage = 0;
 
@@ -81,7 +86,14 @@ class PeliculasProvider {
 
   Future<List<Pelicula>> getPopulares() async { 
 
+    if (_cargando) return [];                                // Si no estoy cargando, _cargando es igual a true y me carga las siguientes peliculas
+
+    _cargando = true;
+
     _popularesPage++;
+
+  // print ('Cargando peliculas siguientes...');
+
 
     final url = Uri.https(_url, '3/movie/popular', {
 
@@ -95,7 +107,39 @@ class PeliculasProvider {
     _populares.addAll(resp);
     popularesSink(_populares);
 
+    _cargando = false;
+
+
     return resp;
+  }
+
+  Future<List<Actor>> getCast( String peliId ) async {
+
+    final url = Uri.https( _url, '3/movie/$peliId/credits', {
+
+      'api_key'  : _apikey,
+      'language' : _language
+
+    });
+ 
+    final resp = await http.get(url);                             // se coloca await para esperar la respuesta del http que llama al url detallado arriba
+    final decodedData = json.decode(resp.body);                   // Toma al body y lo transforma en un mapa/ Se almacena la respuesta del mapa/ Se toma al body se decodifica y se genera un mapa que se almacena en decodedData
+    final cast = new Cast.fromJsonList(decodedData['cast']);      // Enviamos el mapa en su propriedad de cast y se envia a la instancia cast
+
+    return cast.actores;
+ }
+
+
+  Future<List<Pelicula>> buscarPelicula( String query ) async {
+
+    final url = Uri.https(_url, '3/search/movie', {
+      'api_key'  : _apikey,
+      'language' : _language,
+      'query'    : query
+    });
+
+    return await _procesarRespuesta(url);
+
   }
 
 }

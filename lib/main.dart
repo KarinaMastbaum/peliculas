@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas/src/pages/home_page.dart';
+import 'package:peliculas/src/pages/pelicula_detalle.dart';
  
 
  //mateapp crea todo el runApp
@@ -13,7 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'Peliculas',
       initialRoute: '/',
       routes: {
-        '/': (BuildContext context) => HomePage(),
+        '/'       : (BuildContext context) => HomePage(),
+        'detalle' : (BuildContext context) => PeliculaDetalle(),
+      
       },
     );
   }

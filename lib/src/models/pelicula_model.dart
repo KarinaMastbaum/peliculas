@@ -20,6 +20,9 @@ for ( var item in jsonList  ) {
 
 
 class Pelicula {
+
+  String uniqueId;
+
   double popularity;
   int voteCount;
   bool video; 
@@ -80,6 +83,19 @@ class Pelicula {
       return 'https://lh3.googleusercontent.com/proxy/waovtLysnxH1iTGFa233ZSJ3yRFgeohfzbGPE2ls506k2SRrwqGUmF0CrRlVutr9M_XJLSLJhz6xcZKRynm_RP9QDuYJyQWteOkE0xUJAw';
     } else {
       return'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+
+    
+  
+  }
+
+
+  getBackgroundImg() {
+
+    if ( posterPath == null ) {
+      return 'https://lh3.googleusercontent.com/proxy/waovtLysnxH1iTGFa233ZSJ3yRFgeohfzbGPE2ls506k2SRrwqGUmF0CrRlVutr9M_XJLSLJhz6xcZKRynm_RP9QDuYJyQWteOkE0xUJAw';
+    } else {
+      return'https://image.tmdb.org/t/p/w500/$backdropPath';
     }
 
     

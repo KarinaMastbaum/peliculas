@@ -1,9 +1,15 @@
+// import 'dart:js';
+
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:peliculas/src/providers/peliculas_provider.dart';
 
+import 'package:peliculas/src/search/search_delegate.dart';
+
 import 'package:peliculas/src/widgets/card_swiper_widget.dart';
+
 import 'package:peliculas/src/widgets/movie_horizontal.dart'; 
 
 
@@ -22,7 +28,12 @@ final estiloTexto = TextStyle(fontSize: 21, color: Colors.white);
       appBar: AppBar(
         actions: <Widget>[
           IconButton(icon: Icon (Icons.search), 
-          onPressed: () {})
+          onPressed: (){
+           showSearch( context: context,
+            delegate: DataSearch(),
+            // query: 'Hola',
+            );
+          })
         ],
         title: Text('Cartelera de cine', style: estiloTexto),
         flexibleSpace: Container(

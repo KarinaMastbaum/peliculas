@@ -1,16 +1,28 @@
-# peliculas
+# Peliculas
 
-A new Flutter project.
+_Este es un proyecto que hice junto al curso de Flutter: Tu guia completa de desarrollo para iOS y Android, dictado por Fernando Herrera en Udemy_
 
-## Getting Started
+![](preview.gif)
 
-This project is a starting point for a Flutter application.
+## Pruebas ⚙️
 
-A few resources to get you started if this is your first Flutter project:
+_Las pruebas fueron realizadas utilizando un dispositivo fisico (Samsung Galaxy S10) y un AVD emulando un Pixel 3XL_
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Construido con 🛠️
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+_Para este proyecto se utilizo Dart y Flutter. Como editor de codigo se utilizo el Visual Studio Code_
+
+* [Flutter](https://flutter.dev/)
+* [Dart](https://dart.dev/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+
+## Autores ✒️
+
+* **Karina Mastbaum** - *Codeo* - [KarinaMastbaum](https://github.com/KarinaMastbaum)
+* **Fernando Herrera** - *Instructor del curso en Udemy* - [Klerith](https://github.com/Klerith)
+
+## Expresiones de Gratitud 🎁
+
+
+---
+Gracias por tu visita ❤️

@@ -33,18 +33,64 @@ class MovieHorizontal extends StatelessWidget {
 
     return Container(
       height: _screenSize.height * 0.2,
-      child: PageView(
+      child: PageView.builder(                                // El page View va a renderizar toda la lista de peliculas, la diferencia del pageView del pageView.Builder es que este ultimo los renderiza bajo demanda, solo cuando son necesarios
         pageSnapping: false,
         controller:  _pageController,
-        children: (
-          _tarjetas(context)
+        itemCount: peliculas.length,
+        itemBuilder: (context, i) {
+          return _tarjeta( context, peliculas [i]);
+        },
+        /*/children: (
+          _tarjetas(context)*/
         ),
-      ),
+      );
+
+  }
+
+  Widget _tarjeta ( BuildContext context, Pelicula pelicula) {
+
+    pelicula.uniqueId = '${ pelicula.id}-poster';
+
+     final tarjeta = Container(
+        margin: EdgeInsets.only(right: 15.0),
+        child: Column(
+          children: <Widget> [
+            Hero(
+              tag: pelicula.uniqueId,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: FadeInImage(
+                image: NetworkImage( pelicula.getPosterImg() ),
+                placeholder: AssetImage('assets/img/no-image.jpg'),
+                fit: BoxFit.cover,
+                height: 140.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 5.0),           
+            Text(
+              pelicula.title,
+              overflow: TextOverflow.ellipsis,  //  Para modificar el texto abajo de las peliculas populares
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ],
+        ),
+
+      );
+
+    return GestureDetector(                                // Detecta los click, los Tab
+      child: tarjeta,
+      onTap: () {
+
+        Navigator.pushNamed(context, 'detalle', arguments: pelicula );
+
+      },
     );
+
   }
 
 
-  List<Widget> _tarjetas(BuildContext context) {
+  /*List<Widget> _tarjetas(BuildContext context) {
 
     return peliculas.map( (pelicula) {
 
@@ -73,9 +119,8 @@ class MovieHorizontal extends StatelessWidget {
       );
     
     
-    }).toList();      // el toList se utiliza para convertirlo en listas de widget
+    }).toList();*/      // el toList se utiliza para convertirlo en listas de widget
   
   
   }
 
-}
